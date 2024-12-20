@@ -1,9 +1,9 @@
 from sqlalchemy import create_engine, Column, Integer, String, Float, ForeignKey, JSON
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship
-from db_config import DATABASE_URL
+import os
 
-engine = create_engine(DATABASE_URL)
+engine = create_engine(os.getenv("DATABASE_URL"))
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
