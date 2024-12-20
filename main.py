@@ -1,10 +1,8 @@
 from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 from typing import List
-import re
 from models.recipe import Recipe
-from models.ingredient import Ingredient
 from database import get_db, DBRecipe, DBIngredient
 from recipe_converter import process_recipe
 app = FastAPI()
@@ -98,4 +96,4 @@ def convert_recipe_text(unstructured_recipes: RecipeTextRequest):
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("server:app", host="0.0.0.0", port=8000, reload=True) 
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True) 
